@@ -4,34 +4,19 @@ import React from 'react';
 class DoctorList extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {}
-    
         this.handleSelection = this.handleSelection.bind(this);
     }
   
     handleSelection(ev) {
         const docID = ev.target.dataset.key;
-        const doctor = this.state.doctors.filter(doc => doc._id === docID)[0];
-        console.log(doctor);
+        const doctor = this.props.doctors.filter(doc => doc._id === docID)[0];
 
         // notify the rest of the app that the doctor changed
         this.props.onDoctorSelection(doctor);
     }
-  
-    componentDidMount() {
-        // todo: move to app so that the reset button will work!
-        fetch('/doctors')
-            .then(response => response.json())
-            .then(data => {
-                this.setState({
-                    doctors: data
-                })
-            })
-    }
 
     render () {
-        if (!this.state.doctors) {
+        if (!this.props.doctors) {
             return (
                 <aside className="aside">
                     {/* List of doctors goes here */}
@@ -41,15 +26,16 @@ class DoctorList extends React.Component {
 
         return (
             <aside className="aside">
-                <ul>
+                <ol>
                 {
-                    this.state.doctors.map(item => (
+                    this.props.doctors.map(item => (
                         <li key={item._id} >
                             <a href="#" data-key={item._id} onClick={this.handleSelection}>{item.name}</a>
                         </li>
                     ))
                 }
-                </ul>
+                </ol>
+                <button className="btn" onClick={this.props.addNewDoc}>Add New</button>
             </aside>
         );
     }

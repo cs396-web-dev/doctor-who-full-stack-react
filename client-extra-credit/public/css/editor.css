@@ -60,15 +60,39 @@ body {
 }
 
 .error {
-    display: none;
-    background: rgba(161, 51, 51, 0.342);
     color: rgb(160, 6, 6);
-    padding: 5px;
-    border-radius: 5px;
+    font-size: 13px;
 }
 
 
 /* Form Styles */
+
+label {
+    font-weight: 600;
+}
+.input-section {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.input-section label {
+    display: block;
+    /* font-weight: 600; */
+    padding-bottom: 3px;
+    color: #444;
+}
+.input-section input, .input-section textarea {
+    width: 100%;
+    padding: 4px 8px;
+    border-radius: 4px;
+    line-height: 1.8em;
+    border: solid 1px #999;
+}
+
+.input-section textarea {
+    min-height: 250px;
+}
+
 .btn-main {
     background-color: #7952b3;
     border-color: #7952b3;
@@ -108,7 +132,7 @@ body {
     justify-content: space-between;
     align-items: center;
 } 
-.top a {
+.top button {
     margin-left: 10px;
 }
 
